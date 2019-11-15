@@ -47,5 +47,8 @@
     <Text Include="Edited.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="freq.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

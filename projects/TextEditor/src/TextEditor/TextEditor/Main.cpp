@@ -4,6 +4,9 @@
 #include "curses.h"
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -103,6 +106,8 @@ int main(int argc, char* argv[]) {
 		wrefresh(mWin);
 	}
 
+
+	
 	// Reads file to a vector
 	if (input.is_open() == true) {
 		
@@ -113,7 +118,30 @@ int main(int argc, char* argv[]) {
 
 		}
 	}
+	map<char, int> freq;
 
+	for (int i = 0; i < fyle.size(); i++) {
+		if (fyle[i] > 32 && fyle[i] < 127) {
+
+			freq[fyle[i]]++;
+
+		}
+
+		else
+			continue;
+
+	}
+	output.open("freq.txt");
+
+	for (auto x : freq) {
+		output << x.first << " " << x.second << endl;
+
+	}
+
+
+	
+
+	
 
 
 
