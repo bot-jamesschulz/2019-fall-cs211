@@ -156,8 +156,14 @@ int main(int argc, char* argv[]) {
 
 		}
 	}
-	unordered_map<char, int> freq;
+	
+	
+	
 
+
+	// map to track character frequency
+	unordered_map<char, int> freq;
+	// populating map
 	for (int i = 0; i < fyle.size(); i++) {
 		if (fyle[i] > 32 && fyle[i] < 127) {
 
@@ -170,21 +176,11 @@ int main(int argc, char* argv[]) {
 
 	}
 	
-	
-	
-
-	
-
-	
-
+	//opening files
 	compressed.open("freq.compressed.txt");
 	codes.open("freq.codes.txt");
+	//initializing queue
 	priority_queue<pair<char, int>, vector<pair<char, int>>, MaxHeapPairComparer> priority;
-
-	/*for (auto x : freq) {
-		codes << x.first << " " << x.second << endl;
-
-	}*/
 
 	// Create pair
 	for (auto pair : freq) {
@@ -194,33 +190,27 @@ int main(int argc, char* argv[]) {
 	}
 	
 	int i = 0;
-	
-	// changes map value to binary
-	for (auto &x : freq) {
-		x.second = convertDecimalToBinary(x.second);
-
-	}
-
-	// Output mapping
 	while (!priority.empty()) {
-		codes << priority.top().first << " " << priority.top().second << endl;
-		priority.pop();
-
-	}
-
-	/*while (!priority.empty()) {
-		compressed << priority.top().first << " " << convertDecimalToBinary(i) << endl;
+		int j = convertDecimalToBinary(i);
+		freq[priority.top().first] = j;
+		codes << priority.top().first << " " << j << endl;
 		priority.pop();
 		i++;
 
-	}*/
-
-
+	}
+	
+	int space = 0;
 	// Output binary file
 	for (int i = 0; i < fyle.size(); i++) {
 
 		if (fyle[i] == 32) {
+			if (space >= 8) {
+				compressed << endl;
+				space = 0;
+			}
 			compressed << " ";
+			space++;
+
 		}
 		else
 			compressed << freq[fyle[i]];
@@ -228,8 +218,7 @@ int main(int argc, char* argv[]) {
 
 	}
 	
-
-	
+	// Closing files
 	compressed.close();
 	codes.close();
 	
