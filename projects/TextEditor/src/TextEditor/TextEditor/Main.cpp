@@ -7,14 +7,52 @@
 #include <unordered_map>
 #include <map>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
 
+// pair frequeny sorting
+class MaxHeapPairComparer
+{
+public:
+	template<typename K, typename V>
+	bool operator()(const pair<K, V>& left, const pair <K, V>& right)
+	{
+		return left.second < right.second;
+	}
+};
+
+class MinHeapPairComparer
+{
+
+public:
+	template<typename K, typename V>
+	bool operator()(const pair<K, V>& left, const pair <K, V>& right)
+	{
+		return left.second > right.second;
+	}
+};
+
+long long convertDecimalToBinary(int n)
+{
+	long long binaryNumber = 0;
+	int remainder, i = 1, step = 1;
+	while (n != 0)
+	{
+		remainder = n % 2;
+		n /= 2;
+		binaryNumber += remainder * i;
+		i *= 10;
+	}
+	return binaryNumber;
+}
 void drawText(WINDOW* win, vector<char> &vect, const int term_rows, const int term_cols, int start); // Displays  contents of vector in main window and get length
 void get_curs_pos(WINDOW* get, WINDOW* write, int rows); // Writes cursor's y and x position
 
 int main(int argc, char* argv[]) {
+
+
 
 	
 
@@ -96,7 +134,7 @@ int main(int argc, char* argv[]) {
 	
 	// Loads specified file from command line in to a vector
 	ifstream input (argv[1]);
-	ofstream output;
+	ofstream output, codes, compressed;
 	input >> noskipws;
 	vector<char> fyle{};
 
@@ -118,7 +156,7 @@ int main(int argc, char* argv[]) {
 
 		}
 	}
-	map<char, int> freq;
+	unordered_map<char, int> freq;
 
 	for (int i = 0; i < fyle.size(); i++) {
 		if (fyle[i] > 32 && fyle[i] < 127) {
@@ -131,15 +169,73 @@ int main(int argc, char* argv[]) {
 			continue;
 
 	}
-	output.open("freq.txt");
+	
+	
+	
 
-	for (auto x : freq) {
-		output << x.first << " " << x.second << endl;
+	
+
+	
+
+	compressed.open("freq.compressed.txt");
+	codes.open("freq.codes.txt");
+	priority_queue<pair<char, int>, vector<pair<char, int>>, MaxHeapPairComparer> priority;
+
+	/*for (auto x : freq) {
+		codes << x.first << " " << x.second << endl;
+
+	}*/
+
+	// Create pair
+	for (auto pair : freq) {
+
+		priority.push(pair);
+
+	}
+	
+	int i = 0;
+	
+	// changes map value to binary
+	for (auto &x : freq) {
+		x.second = convertDecimalToBinary(x.second);
 
 	}
 
+	// Output mapping
+	while (!priority.empty()) {
+		codes << priority.top().first << " " << priority.top().second << endl;
+		priority.pop();
+
+	}
+
+	/*while (!priority.empty()) {
+		compressed << priority.top().first << " " << convertDecimalToBinary(i) << endl;
+		priority.pop();
+		i++;
+
+	}*/
+
+
+	// Output binary file
+	for (int i = 0; i < fyle.size(); i++) {
+
+		if (fyle[i] == 32) {
+			compressed << " ";
+		}
+		else
+			compressed << freq[fyle[i]];
+
+
+	}
+	
 
 	
+	compressed.close();
+	codes.close();
+	
+
+
+
 
 	
 
