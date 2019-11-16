@@ -1,7 +1,17 @@
-Milestone 6 brought up some new challenges I was not expecting to encounter. Unfortunately I think most of issues I strugled with was a
+  Milestone 6 brought up some new challenges I was not expecting to encounter. Unfortunately I think most of issues I strugled with was a
 result of me missing classes. When I initially read the assignments description I was overly confident. It was a struggle for me to
 find teh correct syntax top manipulate some of these newer data structures that I am not so familiar with. I'm fairly confident if I would
 have been attending more lectures I would not have struggled with some of the basic functionalities of these data structures. For example,
-I had no idea where to go in order to build a max heap. For a while I was convinced I had to build my own priority queue out of a linked list. 
-One thing that is still frustrating me a bit, is I don't really understand where the priority queue data structure comes from, how it functions, or when it is useful; even though I implemented it into my program. Again though, I am fairly certain this was already covered in lecture. A side note, I was surprised at how little information I could find on implementing priority queues and pairs, especially when they were combined.
-Ultimately, what I learned the most about during this project was the manipulation between data structures. Trying to place an unordered map into a priority queue and then sorting and ultimately outputting to two separate files forced me to think in terms of how each data structure interacted with one another. More than once I caught myself using incorrect syntax when I was bouncing between data structures. Additionally I gained more familiarity with file io and maps in particular, as well as trying out the auto iterator for the first time which led to some shortcuts and also some issues I would not have expected.
+I had no idea where to go in order to build a max heap. For a while I was convinced I had to build my own priority queue out of a linked
+list. One thing that is still frustrating me a bit, is I don't really understand where the priority queue data structure comes from, how it functions,
+or when it is useful; even though I implemented it into my program. Again though, I am fairly certain this was already covered in lecture.
+A side note, I was surprised at how little information I could find on implementing priority queues and pairs, especially when they were
+combined.
+  Ultimately, what I learned the most about during this project was the manipulation between data structures. Trying to place an unordered
+map intoa priority queue and then sorting and ultimately outputting to two separate files forced me to think in terms of how each data 
+structure interacted with one another. More than once I caught myself using incorrect syntax when I was bouncing between data structures.
+Additionally I gained more familiarity with file io and maps in particular, as well as trying out the auto iterator for the first time
+which led to some shortcuts and also some issues I would not have expected.
+
+
+GIF https://github.com/bot-jamesschulz/2019-fall-cs211/blob/master/projects/TextEditor/docs/LICEcap%20gifs.gif
