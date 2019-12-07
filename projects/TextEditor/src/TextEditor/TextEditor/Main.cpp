@@ -13,6 +13,25 @@
 using namespace std;
 
 
+void insertionSort(vector<string>& strings)
+{
+	typedef vector<std::string>::size_type size_type;
+
+	for (size_type i = 1; i < strings.size(); ++i)
+	{
+		string tmp = strings[i];
+
+		size_type j = i;
+
+		for (; j != 0 && tmp < strings[j - 1]; --j)
+		{
+			strings[j] = strings[j - 1];
+		}
+
+		if (j != i) strings[j] = tmp;
+	}
+}
+
 
 // pair frequeny sorting
 class MaxHeapPairComparer
@@ -49,6 +68,8 @@ long long convertDecimalToBinary(int n)
 	}
 	return binaryNumber;
 }
+
+
 void drawText(WINDOW* win, vector<char> &vect, const int term_rows, const int term_cols, int start); // Displays  contents of vector in main window and get length
 void get_curs_pos(WINDOW* get, WINDOW* write, int rows); // Writes cursor's y and x position
 
@@ -155,10 +176,12 @@ int main(int argc, char* argv[]) {
 		
 
 		while (input.good() == true) {
-			input >> word;
-			sort.push_back(word);
+			//String vector creation
+			//input >> word;
+			//sort.push_back(word);
 			
 			char letter;
+			
 			input >> letter;
 			fyle.push_back(letter);
 
@@ -169,11 +192,11 @@ int main(int argc, char* argv[]) {
 	}
 
 	
-		
+	insertionSort(sort);
 
 	
 
-
+	// Insertion sort file op
 	ofstream insertion;
 	insertion.open("insertion.txt");
 	//insertion << sort.size();
