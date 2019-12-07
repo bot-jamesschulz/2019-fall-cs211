@@ -8,8 +8,10 @@
 #include <map>
 #include <algorithm>
 #include <queue>
+#include <sstream>
 
 using namespace std;
+
 
 
 // pair frequeny sorting
@@ -145,17 +147,44 @@ int main(int argc, char* argv[]) {
 	}
 
 
-	
+	vector<string> sort;
+	string word;
+
 	// Reads file to a vector
 	if (input.is_open() == true) {
 		
+
 		while (input.good() == true) {
+			input >> word;
+			sort.push_back(word);
+			
 			char letter;
 			input >> letter;
 			fyle.push_back(letter);
 
+
+
 		}
+		
 	}
+
+	
+		
+
+	
+
+
+	ofstream insertion;
+	insertion.open("insertion.txt");
+	//insertion << sort.size();
+	for (int i = 0; i < sort.size(); i++) {
+		insertion << sort[i] << endl;
+
+	}
+	
+
+	insertion.close();
+
 	
 	
 	

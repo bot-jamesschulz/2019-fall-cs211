@@ -53,5 +53,8 @@
     <Text Include="freq.compressed.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Insertion.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
